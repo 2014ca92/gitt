@@ -67,7 +67,7 @@ class Btree{
        {
           // view =0;
            topview(root,0,k);
-                System.out.println(view+" "+"dis="+k);
+                System.out.println(view+" "+"dis="+k);;
            
        }
     }
