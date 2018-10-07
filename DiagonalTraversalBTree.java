@@ -25,6 +25,8 @@ public class DiagonalTraversalBTree
 		} 
 	} 
 	// Print diagonal traversal of given binary tree 
+
+static int max=0;
 	static void diagonalPrint(Node root) 
 	{ 
 
@@ -34,20 +36,18 @@ public class DiagonalTraversalBTree
       if(root.right!=null)
       map.put(root.right,map.get(root));
       
-       if(root.left!=null)
-      map.put(root.left,(map.get(root)-1));
-      
+       if(root.left!=null){
+      map.put(root.left,(map.get(root)+1));
+       
+             if(max<map.get(root)+1)
+           max=(map.get(root)+1);
+           System.out.println("max=="+max);
+       }
       diagonalPrint(root.left);
       diagonalPrint(root.right);
-      
-     
-
-
 	} 
-	
 	// Driver program 
-	public static void main(String[] args) { 
-		
+	public static void main(String[] args) { 	
 		Node root = new Node(8); 
 		root.left = new Node(3); 
 		root.right = new Node(10); 
@@ -63,15 +63,13 @@ public class DiagonalTraversalBTree
 	//	+m.getValue()
 		Node k=null;
 		 int i=0;
-      for(i=0;i>=-2;i--)
+      for(i=0;i<=max;i++)
       {
-          
-   
         for(Map.Entry m:map.entrySet()){  
             
               k=(Node)m.getKey();
                      if((int)m.getValue()==i)
-   System.out.print(","+(int)(k.data)+" ");  
+   System.out.print(","+(int)(k.data));  
   }  
     System.out.println();         
           
